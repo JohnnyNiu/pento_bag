@@ -1,6 +1,6 @@
-package com.bag.crawler.proxy;
+package com.bag.utils.proxy;
 
-import com.bag.crawler.proxy.model.Proxy;
+import com.bag.utils.proxy.model.Proxy;
 
 import java.util.List;
 

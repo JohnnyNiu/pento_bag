@@ -1,6 +1,6 @@
-package com.bag.crawler.htmlParser;
+package com.bag.utils.crawler.htmlParser;
 
-import com.bag.crawler.proxy.model.Proxy;
+import com.bag.utils.proxy.model.Proxy;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Component;

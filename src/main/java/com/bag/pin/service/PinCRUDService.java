@@ -10,7 +10,7 @@ import org.springframework.util.ObjectUtils;
  * Created by johnny on 25/11/15.
  */
 @Service
-public class PinService {
+public class PinCRUDService {
 
     @Autowired
     PinDao pinDao;
@@ -26,4 +26,5 @@ public class PinService {
     public void removeAll() {
         pinDao.removeAll();
     }
+
 }

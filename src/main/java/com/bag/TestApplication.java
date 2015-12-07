@@ -2,7 +2,7 @@ package com.bag;
 
 import java.io.IOException;
 
-import com.bag.crawler.htmldownloader.ConcurrentHttpClientHtmlDownloader;
+import com.bag.utils.crawler.htmldownloader.ConcurrentHttpClientHtmlDownloader;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

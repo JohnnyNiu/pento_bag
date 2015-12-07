@@ -1,4 +1,4 @@
-package com.bag.crawler.htmldownloader;
+package com.bag.utils.crawler.htmldownloader;
 
 import java.io.IOException;
 
@@ -10,6 +10,5 @@ import org.jsoup.nodes.Document;
 public interface HtmlDownloader {
 
      Document getHtmlDocument(String url) throws IOException;
-
 
 }

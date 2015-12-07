@@ -1,4 +1,4 @@
-package com.bag.crawler.proxy;
+package com.bag.utils.proxy;
 
 import org.apache.http.HttpHost;
 import org.apache.http.client.ClientProtocolException;
@@ -50,10 +50,5 @@ public class ProxyChecker {
             }
             return false;
         }
-    }
-
-    public static void main(String[] args) {
-        ProxyChecker mat = new ProxyChecker();
-        mat.checkproxies("117.177.250.149", 83);
     }
 }

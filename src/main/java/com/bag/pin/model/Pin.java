@@ -11,11 +11,13 @@ import java.util.Date;
 public class Pin {
     private String id;
     private String title;
-    private String source;
+    private String sourceName;
+    private String sourceUrl;
     private Date date;
     private long favoriteTotal;
     private long like_total;
     private String pentoUserId;
+    private Date crawlDate;
 
     public String getId() {
         return id;
@@ -33,12 +35,12 @@ public class Pin {
         this.title = title;
     }
 
-    public String getSource() {
-        return source;
+    public String getSourceUrl() {
+        return sourceUrl;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 
     public Date getDate() {
@@ -73,12 +75,21 @@ public class Pin {
         this.pentoUserId = pentoUserId;
     }
 
+    public Date getCrawlDate() {
+        return crawlDate;
+    }
+
+    public void setCrawlDate(Date crawlDate) {
+        this.crawlDate = crawlDate;
+    }
+
     @Override
     public String toString() {
         return "Pin{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", source='" + source + '\'' +
+                ", sourceName='" + sourceName + '\'' +
+                ", sourceUrl='" + sourceUrl + '\'' +
                 ", date=" + date +
                 ", favoriteTotal=" + favoriteTotal +
                 ", like_total=" + like_total +
@@ -88,6 +99,7 @@ public class Pin {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -97,7 +109,8 @@ public class Pin {
         if (like_total != pin.like_total) return false;
         if (id != null ? !id.equals(pin.id) : pin.id != null) return false;
         if (title != null ? !title.equals(pin.title) : pin.title != null) return false;
-        if (source != null ? !source.equals(pin.source) : pin.source != null) return false;
+        if (sourceName != null ? !sourceName.equals(pin.sourceName) : pin.sourceName != null) return false;
+        if (sourceUrl != null ? !sourceUrl.equals(pin.sourceUrl) : pin.sourceUrl != null) return false;
         if (date != null ? !date.equals(pin.date) : pin.date != null) return false;
         return !(pentoUserId != null ? !pentoUserId.equals(pin.pentoUserId) : pin.pentoUserId != null);
 
@@ -107,11 +120,20 @@ public class Pin {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (source != null ? source.hashCode() : 0);
+        result = 31 * result + (sourceName != null ? sourceName.hashCode() : 0);
+        result = 31 * result + (sourceUrl != null ? sourceUrl.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (int) (favoriteTotal ^ (favoriteTotal >>> 32));
         result = 31 * result + (int) (like_total ^ (like_total >>> 32));
         result = 31 * result + (pentoUserId != null ? pentoUserId.hashCode() : 0);
         return result;
+    }
+
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
     }
 }

@@ -1,11 +1,11 @@
-package com.bag.crawler.htmldownloader;
+package com.bag.utils.crawler.htmldownloader;
 
-
-import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 /**
  * Created by johnny on 24/11/15.
@@ -19,4 +19,5 @@ public class JsoupHtmlDownloader implements HtmlDownloader {
         Document doc = Jsoup.connect(url).get();
         return doc;
     }
+
 }

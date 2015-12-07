@@ -1,9 +1,10 @@
-package com.bag.crawler.htmldownloader;
+package com.bag.utils.crawler.htmldownloader;
 
 
 import java.io.IOException;
 import java.util.Date;
 
+import com.bag.utils.crawler.htmldownloader.HtmlDownloader;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;

@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+
 /**
  * Created by johnny on 25/11/15.
  */
@@ -16,6 +18,7 @@ public class PinDao {
     private MongoTemplate mongoTemplate;
 
     public void save (Pin pin) {
+        pin.setCrawlDate(new Date());
         mongoTemplate.save(pin);
     }
 
