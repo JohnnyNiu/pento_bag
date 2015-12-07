@@ -4,9 +4,8 @@ package com.bag.utils.crawler.htmldownloader;
 import java.io.IOException;
 import java.util.Date;
 
-import com.bag.utils.crawler.htmldownloader.HtmlDownloader;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -32,36 +31,35 @@ public class ConcurrentHttpClientHtmlDownloader implements HtmlDownloader {
 
         CloseableHttpClient client = HttpClients.custom().setConnectionManager(connectionManager).build();
         String pageContent = "---Not In Use -----";
-        MulitHttpClientConnThread thread = new MulitHttpClientConnThread(client, new HttpGet(url));
+        MultiHttpClientConnThread thread = new MultiHttpClientConnThread(client, new HttpGet(url));
         thread.start();
 
-
-
-        if(connectionManager.getTotalStats().getLeased() != 1) {
-           // throw new IllegalArgumentException("Some thing wrong here!!!");
-        }
         return Jsoup.parse(pageContent);
     }
 
 
-    public class MulitHttpClientConnThread extends Thread {
+    public class MultiHttpClientConnThread extends Thread {
         private final CloseableHttpClient closeableHttpClient;
         private final HttpGet httpGet;
 
-        public MulitHttpClientConnThread(CloseableHttpClient closeableHttpClient, HttpGet httpGet) {
+        public MultiHttpClientConnThread(CloseableHttpClient closeableHttpClient, HttpGet httpGet) {
             this.closeableHttpClient = closeableHttpClient;
             this.httpGet = httpGet;
         }
 
         public void run() {
             try {
-                HttpResponse response = closeableHttpClient.execute(httpGet);
-                String testResult = EntityUtils.toString(response.getEntity());
+                CloseableHttpResponse response = closeableHttpClient.execute(httpGet);
+                try{
+                    String testResult = EntityUtils.toString(response.getEntity());
 
-                Document doc = Jsoup.parse(testResult);
-                System.out.println(new Date().toString() + "----" + doc.title());
+                    Document doc = Jsoup.parse(testResult);
+                    System.out.println(new Date().toString() + "----" + doc.title());
 
-                EntityUtils.consume(response.getEntity());
+                    EntityUtils.consume(response.getEntity());
+                } finally {
+                    response.close();
+                }
             } catch (ClientProtocolException ex) {
             } catch (IOException ex) {
             }
